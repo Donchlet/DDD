@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Detail</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css/' %}" type="text/css">
+</head>
+<style>
+
+    body {
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    }
+    .btn-primary {
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+<div class="button">
+    <a href="/books/" class="btn btn-primary">Books</a>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ book.title }}</h5>
+    <p class="card-text">{{book.description}}</p>
+      <hr>
+      <p>Name author: {{ book.author }}</p>
+      <time>{{ book.created_date }}</time>
+  </div>
+</div>
+<div>
+    <button type="button" class="btn btn-secondary"><a href="/books/{{ book.id }}/update/">Change</a></button>
+    <button type="button" class="btn btn-secondary"><a href="/books/{{ book.id }}/delete/">Delete</a></button>
+</div>
+<!--<h2>{{ book.title }}</h2>-->
+<!--<p>{{ book.description }}</p>-->
+<!--<img src="{{ book.image.url }}" alt="">-->
+<!--<p>{{ book.created_date }}</p>-->
+<!--<p>{{ book.author }}</p>-->
+<hr>
+<div class="card">
+    <h2>Comments:</h2>
+    {% for i in comment %}
+        <p>{{ i.text }}</p>
+        <p>{{ i.created_date }}</p>
+        <hr>
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add-book</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css/' %}" type="text/css">
+</head>
+<style>
+    .forms-form {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 130px;
+    }
+
+    .form-control {
+        border-radius: 16px;
+        transition: all 0.5s ease;
+
+    }
+    .form-control:hover{
+        background: #0dcaf0;
+    }
+    .form-label input, textarea, select{
+        border-radius: 16px;
+        outline: none;
+        border: none;
+    }
+    body {
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    }
+</style>
+<body>
+<div class="container forms-form">
+    <div class="mb-3">
+        <div class="row gy-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-9">
+                    <label for="formFile" class="form-label">{{ form.as_p }}</label>
+                    <input class="form-control" type="submit" value="Add New Book">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

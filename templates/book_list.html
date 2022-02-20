@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" type ="text/css" href="{% static 'css/bootstrap.css/' %}"/>
+</head>
+<style>
+    body {
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    }
+</style>
+<body>
+{% for i in book %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{ i.image.url }}" alt="">
+        <div class="card-body">
+         <h5 class="card-title">{{ i.title }}</h5>
+         <p class="card-text">{{ i.genre }}</p>
+         <a href="/books/{{ i.id }}/" class="btn btn-primary">Co Detail</a>
+        </div>
+     </div>
+{% endfor %}
+<!--{% for i in book %}-->
+<!--    <h2><a href="/books/{{ i.id }}/">{{ i.title }}</a></h2>-->
+<!--    <p>{{ i.description }}</p>-->
+<!--    <img src="{{ i.image.url }}" alt="">-->
+<!--    <p>{{ i.created_date }}</p>-->
+<!--    <p>{{ i.author }}</p>-->
+<!--{% endfor %}-->
+</body>
+</html>
