@@ -1,10 +1,18 @@
 from django.db import models
 
 class Book(models.Model):
+    GENRE_CHOICE = (
+        ("Romantic", "Romantic"),
+        ("Drama", "Drama"),
+        ("Historical", "Historical"),
+        ("Comedy", "Comedy"),
+        ("Horror", "Horror"),
+    )
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='')
     created_date = models.DateField(auto_now_add=True)
+    genre = models.CharField(max_length=60, choices=GENRE_CHOICE)
     updated_date = models.DateField(auto_now=True)
     author = models.CharField(max_length=40)
 
