@@ -4,31 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Books</title>
-    <link rel="stylesheet" type ="text/css" href="{% static 'css/bootstrap.css/' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
 </head>
+<body>
 <style>
     body {
-        background-color: #4158D0;
-        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        background-color: #8BC6EC;
+        background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+    }
+    .books__img {
+        height: 300px;
+        object-fit: cover;
+    }
+    .books__container {
+        max-width: 1000px;
+        margin-bottom: 40px;
+    }
+    .books__card {
+        margin-top: 20px;
+    }
+
+    .books__body_card {
+        background-image: linear-gradient( 358.4deg,  rgba(249,151,119,1) -2.1%, rgba(98,58,162,1) 90% );
+    }
+    .books__title {
+        font-family: DejaVu Serif, Condensed, sans-serif;
+    }
+    .books__genre {
+        font-family: DejaVu Serif, Condensed, sans-serif;
+    }
+    .books__button {
+        background-color: black;
     }
 </style>
-<body>
-{% for i in book %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{ i.image.url }}" alt="">
-        <div class="card-body">
-         <h5 class="card-title">{{ i.title }}</h5>
-         <p class="card-text">{{ i.genre }}</p>
-         <a href="/books/{{ i.id }}/" class="btn btn-primary">Co Detail</a>
+<div>
+    <button type="button" class="btn btn-secondary books__button"><a href="/books/">All Books</a></button>
+    <button type="button" class="btn btn-secondary books__button"><a href="/books/comedy/">Comedy Genre</a></button>
+    <button type="button" class="btn btn-secondary books__button"><a href="/books/horror/">Horror Genre</a></button>
+    <button type="button" class="btn btn-secondary books__button"><a href="/books/drama/">Drama Genre</a></button>
+</div>
+<div class="container books__container">
+    <div class="row gy-5">
+        {% for i in object_list %}
+        <div class="col-3">
+            <div class="card books__card">
+                <img src="{{ i.image.url }}" class="card-img-top books__img" alt="...">
+                <div class="card-body books__body_card">
+                    <h5 class="card-title books__title">{{ i.title }}</h5>
+                    <p class="card-text books__genre">{{ i.genre }}</p>
+                    <a href="/books/{{ i.id }}/" class="btn btn-primary">Go Detail</a>
+                </div>
+            </div>
         </div>
-     </div>
-{% endfor %}
-<!--{% for i in book %}-->
-<!--    <h2><a href="/books/{{ i.id }}/">{{ i.title }}</a></h2>-->
-<!--    <p>{{ i.description }}</p>-->
-<!--    <img src="{{ i.image.url }}" alt="">-->
-<!--    <p>{{ i.created_date }}</p>-->
-<!--    <p>{{ i.author }}</p>-->
-<!--{% endfor %}-->
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for i in books %}
+        <li>
+            <h2><a href="/books/{{ i.id }}/">{{ i.title }}</a></h2>
+            <p>{{ i.description }}</p>
+            <img src="{{ i.image.url }}" alt="">
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 </html>
