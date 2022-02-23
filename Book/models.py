@@ -2,9 +2,9 @@ from django.db import models
 
 class Book(models.Model):
     GENRE_CHOICE = (
-        ("Romantic", "Romantic"),
+        ("Fiction", "Fiction"),
         ("Drama", "Drama"),
-        ("Historical", "Historical"),
+        ("Novella", "Novella"),
         ("Comedy", "Comedy"),
         ("Horror", "Horror"),
     )
