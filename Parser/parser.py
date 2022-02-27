@@ -21,26 +21,26 @@ def get_html(url, params=''):
 def get_data(html):
     soup = BeautifulSoup(html, "html.parser")
     items = soup.find_all('div', class_="b-content__inline_item")
-    film = []
+    review = []
 
     for item in items:
-        film.append(
+        review.append(
             {
                 'title': item.find('div', class_="b-content__inline_item-link").get_text(),
                 'image': item.find('a', href_="").find('img').get('src')
             }
         )
-    return film
+    return review
 
 
 @csrf_exempt
 def parser_func():
     html = get_html(URL_REVIEWS)
     if html.status_code == 200:
-        film = []
+        review = []
         for page in range(0, 1):
             html = get_html(URL_REVIEWS, params={'page': page})
-            film.extend(get_data(html.text))
-            return film
+            review.extend(get_data(html.text))
+            return review
     else:
         raise ValueError('Error maybe permission denied')
