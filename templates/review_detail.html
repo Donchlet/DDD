@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<style>
+    .book__detail__image {
+        height: 600px;
+        object-fit: cover;
+    }
+    body {
+        background-color: #00DBDE;
+        background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    }
+    .body__detail {
+        font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        margin-bottom: 100px;
+        margin-top: 20px;
+        background-color: #FF3CAC;
+        background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    }
+    .book__detail__container {
+        margin-top: 20px;
+    }
+</style>
+<div class="container book__detail__container">
+    <div class="card">
+        <div class="card-body body__detail">
+            <h2 class="card-title">{{ object.title }}</h2>
+            <img src="{{ object.image }}" class="card-img-top book__detail__image" alt="...">
+        </div>
+    </div>
+</div>
+</body>
+</html>

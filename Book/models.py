@@ -1,6 +1,6 @@
 from django.db import models
 
-class Book(models.Model):
+class Books(models.Model):
     GENRE_CHOICE = (
         ("Fiction", "Fiction"),
         ("Drama", "Drama"),
@@ -22,7 +22,7 @@ class Book(models.Model):
 class BookFeedback(models.Model):
     text = models.TextField()
     created_date = models.DateField(auto_now_add=True)
-    foreign_key = models.ForeignKey(Book, on_delete=models.CASCADE)
+    foreign_key = models.ForeignKey(Books, on_delete=models.CASCADE, related_name="books_comments")
 
     def __str__(self):
         return self.foreign_key.title
